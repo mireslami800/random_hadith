@@ -1,108 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
-    <style>
-        @font-face {
-            font-family: sahel;
-            src: url(fonts/Sahel.ttf);
-        }
-        @font-face {
-            font-family: vazir;
-            src: url(fonts/Vazir.ttf);
-        }
-        @font-face {
-            font-family: Uthman;
-            src: url(fonts/UthmanTN.otf);
-        }
-        @font-face {
-            font-family: Sahel-Black;
-            src: url(fonts/Sahel-Black.ttf);
-        }
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body{
-            width: 100vw;
-            min-height: 100vh;
-            background-size: cover;
-            background-repeat:no-repeat;
-        }
-        div{
-            direction: rtl;
-            border: none;
-            border-radius: 10px;
-            background: transparent;
-            backdrop-filter: blur(10px);
-            position: absolute;
-            top: 50vh;
-            left: 50vw;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            min-height: 250px;
-            text-align: center;
-            padding: 20px;
-            box-shadow: inset 0 0 0px 2000px rgb(255 255 255 / 9%);
-            border-top: 2px solid rgba(255,255,255,0.3);
-            border-left: 2px solid rgba(255,255,255,0.1);
-            border-right: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-        }
-        div span {
-            display: block;
-            text-shadow: 0 0 4px rgb(0 0 0 / 60%);
-        }
-        .onhadith{
-            font-family: Sahel-Black;
-            display: block;
-            margin-bottom: 22px;
-            font-size: 23px;
-            color: #fff57c;
-            text-shadow: 0px 0px 3px rgb(0 0 0 / 60%);
-        }
-        .mahadith{
-            font-family: sahel;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        .arhadith{
-            font-family: Uthman;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        .fahadith{
-            cursor: text;
-        }
-        .fahadith a{
-            font-family: sahel;
-            pointer-events: none;
-            user-select: auto;
-            color: #fff!important;
-            text-decoration: none!important;
-        }
-        .pahadith{
-            margin-top: 40px;
-        }
-        .pahadith a{
-            font-family: sahel;
-            color:rgb(255, 215, 128)!important;
-        }
-        .pahadith a:hover{
-            font-weight: bold;
-            text-decoration: underline!important;
-        }
-        div br{
-            display: none;
-        }
-    </style>
-    <title>حدیث تصادفی</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+  <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+  <title>حدیث تصادفی</title>
+
+  <style>
+    @font-face {
+      font-family: sahel;
+      src: url(fonts/Sahel.ttf);
+    }
+    @font-face {
+      font-family: vazir;
+      src: url(fonts/Vazir.ttf);
+    }
+    @font-face {
+      font-family: Uthman;
+      src: url(fonts/UthmanTN.otf);
+    }
+    @font-face {
+      font-family: Sahel-Black;
+      src: url(fonts/Sahel-Black.ttf);
+    }
+
+    /* RESET + BOX-SIZING */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* FULLSCREEN FLEX CENTERING */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100vw;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: sahel;
+      overflow-x: hidden;
+      padding: 20px;  /* give breathing room on tiny screens */
+    }
+
+    /* THE “CARD” */
+    .card {
+      direction: rtl;
+      background: rgba(255,255,255,0.09);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: inset 0 0 0px 2000px rgb(255 255 255 / 9%);
+      border-top: 2px solid rgba(255,255,255,0.3);
+      border-left: 2px solid rgba(255,255,255,0.1);
+      border-right: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      
+      /* responsive width */
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .card span {
+      display: block;
+      text-shadow: 0 0 4px rgb(0 0 0 / 60%);
+    }
+
+    .onhadith {
+      font-family: Sahel-Black;
+      font-size: 1.4rem;        /* relative sizing */
+      margin-bottom: 1.5rem;
+      color: #fff57c;
+      text-shadow: 0px 0px 3px rgb(0 0 0 / 60%);
+    }
+
+    .mahadith {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .arhadith {
+      font-family: Uthman;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .fahadith {
+      cursor: text;
+    }
+
+    .fahadith a {
+      pointer-events: none;
+      user-select: auto;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+
+    .pahadith {
+      margin-top: 2.5rem;
+    }
+
+    .pahadith a {
+      color: rgb(255, 215, 128) !important;
+      font-family: sahel;
+    }
+
+    .pahadith a:hover {
+      font-weight: bold;
+      text-decoration: underline !important;
+    }
+
+    /* HIDE <br> INSIDE CARD */
+    .card br {
+      display: none;
+    }
+
+    /* SMALLER SCREENS TWEAKS */
+    @media only screen and (max-width: 480px) {
+      .onhadith {
+        font-size: 1.2rem;
+      }
+      .arhadith {
+        font-size: 1.3rem;
+      }
+      .mahadith {
+        font-size: 0.9rem;
+      }
+      .card {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <script src="script.js"></script>
-    <script type='text/javascript' src='https://www.hadithlib.com/hadithlibjs/randomd/1/1/1/1/1/1/1/1'></script></body>
+  <div class="card">
+    <!-- Your random hadith content will get injected here
+         by the hadithlib script -->
+    <span class="onhadith">عنوان حدیث</span>
+    <span class="arhadith">حديث بالعربية</span>
+    <span class="mahadith">Translation</span>
+    <p class="fahadith"><a href="#">مصدر الحديث</a></p>
+    <p class="pahadith"><a href="#">روابط أخرى</a></p>
+  </div>
+
+  <script>
+    // set random background
+    var randomNum = Math.floor(Math.random() * 23) + 1;
+    document.body.style.backgroundImage = `url(bg/${randomNum}.jpg)`;
+  </script>
+  <script 
+    type="text/javascript" 
+    src="https://www.hadithlib.com/hadithlibjs/randomd/1/1/1/1/1/1/1/1"
+  ></script>
+</body>
 </html>
