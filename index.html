@@ -3,36 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="icon.png" type="image/x-icon">
     <style>
-        /* Existing font-face declarations remain the same */
-        
-        * {
+        @font-face {
+            font-family: sahel;
+            src: url(fonts/Sahel.ttf);
+        }
+        @font-face {
+            font-family: vazir;
+            src: url(fonts/Vazir.ttf);
+        }
+        @font-face {
+            font-family: Uthman;
+            src: url(fonts/UthmanTN.otf);
+        }
+        @font-face {
+            font-family: Sahel-Black;
+            src: url(fonts/Sahel-Black.ttf);
+        }
+        *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
+        body{
             width: 100vw;
             min-height: 100vh;
             background-size: cover;
+            background-repeat:no-repeat;
             background-position: center;
-            background-repeat: no-repeat;
             background-attachment: fixed;
         }
-        div {
+        div{
             direction: rtl;
             border: none;
             border-radius: 10px;
             background: transparent;
             backdrop-filter: blur(10px);
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50vh;
+            left: 50vw;
             transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 500px;
+            width: 500px;
             min-height: 250px;
             text-align: center;
             padding: 20px;
@@ -41,19 +54,72 @@
             border-left: 2px solid rgba(255,255,255,0.1);
             border-right: 1px solid rgba(255,255,255,0.2);
             color: #fff;
+            max-width: 90%;
+            margin: 0 auto;
         }
-        /* Existing span styles remain the same */
+        div span {
+            display: block;
+            text-shadow: 0 0 4px rgb(0 0 0 / 60%);
+        }
+        .onhadith{
+            font-family: Sahel-Black;
+            display: block;
+            margin-bottom: 22px;
+            font-size: 23px;
+            color: #fff57c;
+            text-shadow: 0px 0px 3px rgb(0 0 0 / 60%);
+        }
+        .mahadith{
+            font-family: sahel;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .arhadith{
+            font-family: Uthman;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .fahadith{
+            cursor: text;
+        }
+        .fahadith a{
+            font-family: sahel;
+            pointer-events: none;
+            user-select: auto;
+            color: #fff!important;
+            text-decoration: none!important;
+        }
+        .pahadith{
+            margin-top: 40px;
+        }
+        .pahadith a{
+            font-family: sahel;
+            color:rgb(255, 215, 128)!important;
+        }
+        .pahadith a:hover{
+            font-weight: bold;
+            text-decoration: underline!important;
+        }
+        div br{
+            display: none;
+        }
 
-        @media screen and (max-width: 768px) {
+        /* Responsive Additions */
+        @media screen and (max-width: 600px) {
+            div {
+                width: 95%;
+                padding: 15px;
+                min-height: 200px;
+            }
             .arhadith {
                 font-size: 20px;
             }
             .onhadith {
                 font-size: 20px;
+                margin-bottom: 18px;
             }
-            div {
-                padding: 15px;
-                min-height: 200px;
+            .mahadith {
+                font-size: 15px;
             }
         }
 
@@ -61,25 +127,29 @@
             .arhadith {
                 font-size: 18px;
             }
-            .mahadith {
-                font-size: 14px;
-            }
             .onhadith {
                 font-size: 18px;
                 margin-bottom: 15px;
             }
-            div {
-                padding: 10px;
-                min-height: 180px;
+            .mahadith {
+                font-size: 14px;
             }
             .pahadith {
                 margin-top: 25px;
             }
         }
 
-        /* Add touch optimization */
-        .pahadith a {
-            touch-action: manipulation;
+        @media screen and (max-width: 360px) {
+            div {
+                padding: 12px;
+                min-height: 180px;
+            }
+            .arhadith {
+                font-size: 16px;
+            }
+            .onhadith {
+                font-size: 16px;
+            }
         }
     </style>
     <title>حدیث تصادفی</title>
