@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="icon.png" type="image/x-icon">
     <style>
+        /* ALL ORIGINAL STYLES EXACTLY AS THEY WERE */
         @font-face {
             font-family: sahel;
             src: url(fonts/Sahel.ttf);
@@ -151,11 +152,73 @@
                 font-size: 16px;
             }
         }
+
+        /* NEW BUTTON STYLES (ADDED WITHOUT MODIFYING EXISTING ONES) */
+        .new-hadith-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 25px;
+            font-family: sahel;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            color: rgb(255, 215, 128);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            font-size: 16px;
+        }
+        .new-hadith-btn:hover {
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+        }
+        @media screen and (max-width: 480px) {
+            .new-hadith-btn {
+                padding: 8px 20px;
+                font-size: 14px;
+                bottom: 20px;
+            }
+        }
     </style>
     <title>حدیث تصادفی</title>
 </head>
 <body>
-    <script src="script.js"></script>
-    <script type='text/javascript' src='https://www.hadithlib.com/hadithlibjs/randomd/1/1/1/1/1/1/1/1'></script>
+    <!-- Hadith container with original structure -->
+    <div id="hadith-container">
+        <!-- Hadith content will be loaded here by the script -->
+    </div>
+    
+    <!-- New button -->
+    <button class="new-hadith-btn">حدیث جدید</button>
+
+    <script>
+        // Initialize with random background
+        let randomNum = Math.floor(Math.random()*23) + 1;
+        document.body.style.backgroundImage = `url(bg/${randomNum}.jpg)`;
+        
+        // Function to load new hadith
+        function loadNewHadith() {
+            // Change background
+            randomNum = Math.floor(Math.random()*23) + 1;
+            document.body.style.backgroundImage = `url(bg/${randomNum}.jpg)`;
+            
+            // Clear container and load new hadith
+            const container = document.getElementById('hadith-container');
+            container.innerHTML = '';
+            
+            const script = document.createElement('script');
+            script.src = 'https://www.hadithlib.com/hadithlibjs/randomd/1/1/1/1/1/1/1/1?r=' + Date.now();
+            container.appendChild(script);
+        }
+
+        // Button click handler
+        document.querySelector('.new-hadith-btn').addEventListener('click', loadNewHadith);
+        
+        // Initial load
+        loadNewHadith();
+    </script>
 </body>
 </html>
